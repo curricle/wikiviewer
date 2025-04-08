@@ -1,63 +1,64 @@
 <html>
     <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="styles.css"/>
-	<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
-	<script>
-	
-	    $(document).ready(function() {
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="styles.css"/>
+		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		
-		function search(term) {
+		<script>
+		
+			$(document).ready(function() {
 			
-			var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + term + "&callback=?";
-	
-		  	//get wikipedia search data
-		  	$.getJSON(url, function(data){
-		  		var html = ""; 
+			function search(term) {
+				
+				var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + term + "&callback=?";
 		
-		  		//create divs for each search result entry featuring article title and description
-		  		$.each(data[1], function(index, val){
-		  			console.log(index + ": " + val);
-		  			html += "<a href=" + data[3][index] + "><div class='pageDiv'>" + "<strong>" + data[1][index] + "</strong><br>" + data[2][index] + "</div></a>";
-		  		});		
+				//get wikipedia search data
+				$.getJSON(url, function(data){
+					var html = ""; 
+			
+					//create divs for each search result entry featuring article title and description
+					$.each(data[1], function(index, val){
+						console.log(index + ": " + val);
+						html += "<a href=" + data[3][index] + "><div class='pageDiv'>" + "<strong>" + data[1][index] + "</strong><br>" + data[2][index] + "</div></a>";
+					});		
+			
+					//place search results into document html
+					$(".results").html(html);
+			
+					});
+			}
 		
-		  		//place search results into document html
-		  		$(".results").html(html);
+			// button click function
+			$("#searchButton").on("click", function() {			
+				//conduct search when button is clicked
+				search(document.getElementById("searchBar").value);
+			});
+			
+		});
 		
-		  	    });
-		}
-	
-		// button click function
-		$("#searchButton").on("click", function() {
-			console.log("I've been clicked!");
-		
-			//conduct search when button is clicked
-			search(document.getElementById("searchBar").value);
-  		});
-		
-	});
-	
-	</script>
+		</script>
     </head>
 
     <body>
 	
-	<h1>Wiki Viewer</h1>
+		<header>
+			<h1>Wiki Viewer</h1>
+			<nav>
+				<div class="searchbar container-fluid">
 	
-	<div class="searchbar container-fluid">
-
-   		<input type="text" style="border-size: 1px; border-style: solid; border-color: black;" id="searchBar"></input>
-
-    		<button id="searchButton" class="btn btn-primary">Search</button>
-		<a href="https://en.wikipedia.org/wiki/Special:Random"><button class="btn btn-primary">Random Article</button></a>
+					<input type="text" id="searchBar"></input>
 	
-	</div>
-  
-	<div class="results">
-	</div>
+					<button id="searchButton" class="btn btn-primary">Search</button>
+					<a href="https://en.wikipedia.org/wiki/Special:Random"><button class="btn btn-primary">Random Article</button></a>
+				</div>
+			</nav>
+		</header>
+		
+		<section class="results">
+			<span id="no-results">No results</span>
+		</section>
 
-	<div class="footer">Coded by Sorey!</div>
+		<footer class="footer">Coded by Sorey!</footer>
 
     </body>
 
