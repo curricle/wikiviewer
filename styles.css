@@ -1,4 +1,13 @@
-* {
+:root {
+    --blue-100: #ECF2F8;
+    --blue-200: #CEDEE5;
+    --blue-300: #50A1C2;
+    --blue-400: #07668C;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+*, h1, h2, p {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,17 +18,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--blue-100);
+    gap: 30px;
 }
 
 h1 {
     margin: 0 auto;
     text-align: center;
     padding: 3%;
-}
-
-h2 {
-    font-weight: 700;
-    margin: 0;
+    color: var(--blue-400);
+    font-size: 48px;
 }
 
 .searchbar {
@@ -27,7 +35,6 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 5%;
     text-align: center;
 }
 
@@ -40,36 +47,98 @@ h2 {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    gap: 10px;
-    padding: 3%;
+    gap: 30px;
+    padding: 0 3%;
 }
 
 #searchBar {
-    border: 1px solid #bdbdbd;
+    border: 1px solid var(--blue-200);
     border-radius: 4px;
     padding: 6px 10px;
 }
 
-.pageDiv {
-    background-color: #f0f0f0;
+#searchButton {
+    background-color: var(--blue-300);
+    border: none;
+}
+
+#searchButton:hover {
+    background-color: var(--blue-400);
+}
+
+.btn-primary {
+    background-color: var(--blue-400);
+    border: none;
+    font-size: 13px;
+    transition: .1s all;
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-300);
+}
+
+#showing-results {
+    font-size: 18px;
+}
+
+#search-term {
+    font-weight: 700;
+}
+
+.search-item {
+    background-color: var(--white);
     padding: 30px;
-    border: 3px solid #f0f0f0;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 10px;
+    transition: .1s all;
+    box-shadow: 0 0 15px hsla(197, 91%, 29%, 10%);
     }
 
-.pageDiv:hover  {
-    background-color: white;
+.search-item:hover  {
+    background-color: var(--blue-300);
+    color: var(--white);
+}
+
+.search-item:hover .search-item__description {
+    color: var(--white);
+}
+
+.search-item:hover .searchmatch {
+    color: var(--white);
+}
+
+.search-item:hover .search-item__title {
+    color: var(--white);
+}
+
+.search-item a {
+    color: black;
 }
 
 a:hover {
     text-decoration: none;
 }
 
+.search-item__title {
+    font-weight: 700;
+    margin: 0;
+    color: var(--blue-300);
+}
+
+.search-item__description {
+    color: #000;
+}
+
+.searchmatch {
+    font-weight: 700;
+    color: var(--blue-300);
+}
+
 .footer {
-    background-color: #f0f0f0;
+    border-top: 1px solid var(--blue-200);
     text-align: center;
     padding: 3%;
 }
