@@ -1,42 +1,13 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="styles.css"/>
-		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		
-		<script>
-		
-			$(document).ready(function() {
-			
-			function search(term) {
-				
-				var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + term + "&callback=?";
-		
-				//get wikipedia search data
-				$.getJSON(url, function(data){
-					var html = ""; 
-			
-					//create divs for each search result entry featuring article title and description
-					$.each(data[1], function(index, val){
-						console.log(index + ": " + val);
-						html += "<a href=" + data[3][index] + "><div class='pageDiv'>" + "<strong>" + data[1][index] + "</strong><br>" + data[2][index] + "</div></a>";
-					});		
-			
-					//place search results into document html
-					$(".results").html(html);
-			
-					});
-			}
-		
-			// button click function
-			$("#searchButton").on("click", function() {			
-				//conduct search when button is clicked
-				search(document.getElementById("searchBar").value);
-			});
-			
-		});
-		
-		</script>
+
+		<title>Wiki Viewer</title>
     </head>
 
     <body>
@@ -60,6 +31,8 @@
 
 		<footer class="footer">Coded by Sorey!</footer>
 
+		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+		<script language="JavaScript" type="text/javascript" src="script.js"></script>
     </body>
-
 </html>
+    
